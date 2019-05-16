@@ -27,7 +27,13 @@ public class BookController {
     }
 
     @GetMapping("/books/{id}")
-    public Book getBookById(@PathVariable(value = "id") Long bookId,
+    public Book getNoteById(@PathVariable(value = "id") Long bookId) throws BookNotFoundException {
+        return bookDao.findById(bookId)
+                .orElseThrow(() -> new BookNotFoundException(bookId));
+    }
+
+    @PutMapping("/books/{id}")
+    public Book putBookById(@PathVariable(value = "id") Long bookId,
                             @Valid @RequestBody Book bookDetails)
     throws BookNotFoundException {
         Book book = bookDao.findById(bookId)
