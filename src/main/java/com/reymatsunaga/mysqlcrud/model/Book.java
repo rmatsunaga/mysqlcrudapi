@@ -1,13 +1,10 @@
 package com.reymatsunaga.mysqlcrud.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "books")
+@Table(name = "books.books")
 public class Book {
     @Id
     @GeneratedValue
@@ -25,10 +22,10 @@ public class Book {
     public Book() {
         super();
     }
-    public Book(Long id, String book_name, String authorName, String isbn) {
+    public Book(Long id, String bookName, String authorName, String isbn) {
         super();
         this.id = id;
-        this.bookName = book_name;
+        this.bookName = bookName;
         this.authorName = authorName;
         this.isbn=isbn;
     }
